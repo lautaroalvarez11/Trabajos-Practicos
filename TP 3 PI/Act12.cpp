@@ -35,7 +35,7 @@ Nodo* insertarOrdenado(Nodo* inicio, Articulos productos)
     Nodo* nuevoNodo = new Nodo; // Se crea un nuevo nodo para insertar un articulo en la lista
     nuevoNodo -> siguiente = nullptr; // Se indica que la lista no contiene ningun elemento
 
-    // Al campo articulosSuper del nuevo nodo se le asigna el campo productos para que se guarden los productos pasados por este ultimo parametro y de ahi se almacenen en el struct Articulos 
+    // Al campo articulosSuper del nuevo nodo se le asigna el parametro productos para que se guarden los productos pasados por este ultimo parametro y de ahi se almacenen en el struct Articulos 
     nuevoNodo -> articulosSuper = productos;
 
     
@@ -65,7 +65,7 @@ Nodo* incrementarPrecio(Nodo* inicio, float porcentaje)
     while(auxiliar != nullptr) // Mientras la lista no termine
     {
         auxiliar -> articulosSuper.precio += auxiliar -> articulosSuper.precio * porcentaje / 100; // Al precio de un articulo se le suma ese precio multiplicado por el porcentaje que el usuario desee y dividido 100 para convertirlo a una fracción
-        auxiliar = auxiliar -> siguiente; // Recorre todos los nodos
+        auxiliar = auxiliar -> siguiente; // Recorre todos los nodos (articulos de la lista) para incrementar el precio de c/u
     }
     return inicio; // Retorna el inicio por si se modificaron los precios de los articulos
 }
@@ -73,49 +73,49 @@ Nodo* incrementarPrecio(Nodo* inicio, float porcentaje)
 // FUNCION B
 Nodo* incrementarStock(Nodo* inicio, int codigo, int stock)
 {
-    Nodo* auxiliar = inicio;
-    while(auxiliar != nullptr)
+    Nodo* auxiliar = inicio; // Se crea un puntero auxiliar que empieza en el inicio de la lista
+    while(auxiliar != nullptr) // Mientras la lista no termine
     {
-        if(auxiliar -> articulosSuper.codigo == codigo)
+        if(auxiliar -> articulosSuper.codigo == codigo) // Si el codigo del articulo es igual al codigo ingresado por el usuario
         {
-            auxiliar -> articulosSuper.stock += stock;
-            return inicio;
+            auxiliar -> articulosSuper.stock += stock; // A cada stock del articulo se le suma la cantidad de stock que el usuario ingrese
+            return inicio; // Retorna el inicio por si se modificó la cantidad de stocks
         }
         else
         {
-            auxiliar = auxiliar -> siguiente;
+            auxiliar = auxiliar -> siguiente; // Si el codigo del articulo es distinto del codigo ingresado por el usuario, recorre la lista hasta encontrar el que sea igual
         }
     }
-    cout << "El codigo ingresado no corresponde a ningun articulo en stock.";
-    return inicio;
+    cout << "El codigo ingresado no corresponde a ningun articulo en stock."; // Si se ingresa un codigo no existente
+    return inicio; // Retorna el inicio por si se modificó la cantidad del primer articulo
 }
 
 // FUNCION C
 Nodo* eliminarArticuloSinStock(Nodo* inicio)
 {
-    if(inicio != nullptr)
+    if(inicio != nullptr) // Mientras la lista contenga articulos
     {
-        Nodo* auxiliar = inicio;
-        if(auxiliar -> articulosSuper.stock == 0)
+        Nodo* auxiliar = inicio; // Se crea un puntero auxiliar que empieza en el inicio de la lista
+        if(auxiliar -> articulosSuper.stock == 0) // Si la cantidad de stock del primer articulo es 0
         {
-            inicio = inicio -> siguiente;
-            delete auxiliar;
+            inicio = inicio -> siguiente; // El puntero inicial va a apuntar al siguiente articulo en la lista
+            delete auxiliar; // Se elimina el primer articulo que contenia stock 0
         }
         else
         {
-            while(auxiliar -> siguiente != nullptr && auxiliar -> siguiente -> articulosSuper.codigo != 0)
+            while(auxiliar -> siguiente != nullptr && auxiliar -> siguiente -> articulosSuper.codigo != 0) // Mientras la lista contenga elementos y el codigo del segundo articulo sea distinto de 0
             {
-                auxiliar = auxiliar -> siguiente;
+                auxiliar = auxiliar -> siguiente; // Recorre la lista
             }
-            if(auxiliar -> siguiente -> articulosSuper.codigo == 0)
+            if(auxiliar -> siguiente -> articulosSuper.codigo == 0) // Si el codigo del articulo apuntado por el puntero auxiliar, es decir el inicio, es 0
             {
-                Nodo* aEliminar = auxiliar -> siguiente;
-                auxiliar -> siguiente = aEliminar -> siguiente;
-                delete aEliminar;
+                Nodo* aEliminar = auxiliar -> siguiente; // Se crea un puntero que apunta al siguiente articulo que apunta el puntero auxiliar, es decir el inicio
+                auxiliar -> siguiente = aEliminar -> siguiente; // Se actualiza el puntero siguiente del articulo apuntado por el puntero auxiliar para saltar al articulo con stock 0
+                delete aEliminar; // Se elimina el articulo que contenia stock 0
             }
         }
     }
-    return inicio;
+    return inicio; // Retorna el inicio por si se modificó la cantidad de articulos en la lista
 }
 
 void mostrarLista(Nodo* inicio)
