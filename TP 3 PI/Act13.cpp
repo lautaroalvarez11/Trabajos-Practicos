@@ -41,22 +41,32 @@ Nodo* unirListas(Nodo* listaSucursal1, Nodo* listaSucursal2, Nodo* lista3)
     Nodo* auxiliar2 = listaSucursal2; // Se utiliza un puntero auxiliar2 para recorrer la lista2
     Nodo* auxiliar3 = lista3; // Se utiliza un puntero auxiliar3 para ir guardando los datos en la lista3
 
-    while(auxiliar1 != nullptr) // Mientras la lista1 no se termine
+    while (auxiliar1 != nullptr) // Mientras la lista1 no se termine
     {
-        auxiliar3 = insertarOrdenado(auxiliar3, auxiliar1); // Insertar los datos de la lista1 en la lista3
+        Nodo* nuevo1 = new Nodo; // Crear un nuevo nodo para evitar problemas con el mismo nodo en ambas listas
+        nuevo1 -> producto = auxiliar1 -> producto; // Copiar los datos del nodo actual de lista1 al nuevo nodo
+        nuevo1 -> siguiente = nullptr; // Para indicar que se copiaron todos los elementos de la lista1
+
+        auxiliar3 = insertarOrdenado(auxiliar3, nuevo1); // Insertar los datos de la lista1 en la lista3
         auxiliar1 = auxiliar1 -> siguiente; // Ir recorriendo los nodos
     }
-    while(auxiliar2 != nullptr) // Mientras la lista2 no se termine
+
+    while (auxiliar2 != nullptr)
     {
-        auxiliar3 = insertarOrdenado(auxiliar3, auxiliar2); // Insertar los datos de la lista2 en la lista3
+        Nodo* nuevo2 = new Nodo; // Crear un nuevo nodo para evitar problemas con el mismo nodo en ambas listas
+        nuevo2 -> producto = auxiliar2 -> producto; // Copiar los datos del nodo actual de lista2 al nuevo nodo
+        nuevo2 -> siguiente = nullptr; // Para indicar que se copiaron todos los elementos de la lista1
+
+        auxiliar3 = insertarOrdenado(auxiliar3, nuevo2); // Insertar los datos de la lista2 en la lista3
         auxiliar2 = auxiliar2 -> siguiente; // Ir recorriendo los nodos
     }
-    return auxiliar3; // Retornar la lista3
+
+    return auxiliar3; // Retorna la lista3
 }
 
 void mostrarLista1(Nodo* inicio)
 {
-    cout << "LISTA DE PRODUCTOS VENDIDOS SUCURSAL 1" << endl;
+    cout << "LISTA DE PRODUCTOS VENDIDOS SUCURSAL 1:" << endl;
     for (Nodo* auxiliar = inicio ; auxiliar != nullptr ; auxiliar = auxiliar -> siguiente)
     {
         cout << "Codigo de producto: " << auxiliar -> producto.codigoProducto << endl;
@@ -68,7 +78,7 @@ void mostrarLista1(Nodo* inicio)
 
 void mostrarLista2(Nodo* inicio)
 {
-    cout << "LISTA DE PRODUCTOS VENDIDOS SUCURSAL 2" << endl;
+    cout << "LISTA DE PRODUCTOS VENDIDOS SUCURSAL 2:" << endl;
     for (Nodo* auxiliar = inicio ; auxiliar != nullptr ; auxiliar = auxiliar -> siguiente)
     {
         cout << "Codigo de producto: " << auxiliar -> producto.codigoProducto << endl;
@@ -80,7 +90,7 @@ void mostrarLista2(Nodo* inicio)
 
 void mostrarLista3(Nodo* inicio)
 {
-    cout << "LISTA DE PRODUCTOS VENDIDOS AMBAS SUCURSALES" << endl;
+    cout << "LISTA DE PRODUCTOS VENDIDOS EN AMBAS SUCURSALES:" << endl;
     for (Nodo* auxiliar = inicio ; auxiliar != nullptr ; auxiliar = auxiliar -> siguiente)
     {
         cout << "Codigo de producto: " << auxiliar -> producto.codigoProducto << endl;
@@ -116,7 +126,7 @@ int main()
         nuevo -> siguiente = nullptr;
 
         inicio1 = insertarOrdenado(inicio1, nuevo);
-        cout << "Ingrese el código del producto de la lista de la sucursal 1 (-1 para cortar): ";
+        cout << "Ingrese el codigo del producto de la lista de la sucursal 1 (-1 para cortar): ";
         cin >> codigo1;
     }
 
@@ -135,7 +145,7 @@ int main()
         nuevo -> siguiente = nullptr;
 
         inicio2 = insertarOrdenado(inicio2, nuevo);
-        cout << "Ingrese el código del producto de la lista de la sucursal 2 (-1 para cortar): ";
+        cout << "Ingrese el codigo del producto de la lista de la sucursal 2 (-1 para cortar): ";
         cin >> codigo2;
     }
 
