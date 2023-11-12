@@ -28,10 +28,15 @@ Nodo* insertarAlFinal(Nodo* fin, int numero)
 
 void mostrarLista(Nodo* fin)
 {
-    cout << "Lista: ";
-    for(Nodo* temporal = fin; temporal != nullptr; temporal = temporal -> siguiente)
+    cout << "Lista: " << endl;
+    if(fin != nullptr)
     {
-        cout << temporal -> dato << " ";
+        Nodo* auxiliar = fin -> siguiente;
+        do
+        {
+            cout << auxiliar -> dato << " ";
+            auxiliar = auxiliar -> siguiente; 
+        } while (auxiliar != fin -> siguiente);
     }
 }
 
