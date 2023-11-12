@@ -37,24 +37,34 @@ string modificarTitulo(string titulo)
     return titulo;
 }
 
-bool buscarTitulo(Nodo* fin, string titulo)
+void buscarTitulo(Nodo* fin, string titulo)
 {
-    if (fin == nullptr)
-    {
-        return false; // Lista vacía, no se puede encontrar el título
-    }
-
     Nodo* auxiliar = fin -> siguiente;
-    do
-    {
-        if (auxiliar -> dato == titulo)
-        {
-            return true; // Se encontró el título en la lista
-        }
-        auxiliar = auxiliar -> siguiente;
-    } while (auxiliar != fin -> siguiente);
+    bool tituloEncontrado = false;
 
-    return false; // No se encontró el título en la lista
+    if (fin -> siguiente != nullptr)
+    {
+        do
+        {
+            if(auxiliar -> dato == titulo)
+            {
+                tituloEncontrado = true;
+            }
+            auxiliar = auxiliar -> siguiente;
+        } while (auxiliar != fin -> siguiente && tituloEncontrado == false);
+        if (tituloEncontrado == true)
+        {
+            cout << "El titulo ingresado se encuentra en la lista" << endl;
+        }
+        else
+        {
+            cout << "El titulo ingresado no se encuentra en la lista" << endl;
+        }
+    }
+    else
+    {
+        cout << "La lista esta vacia" << endl;
+    }
 }
 
 void mostrarLista(Nodo* fin)
@@ -77,8 +87,7 @@ int main()
     fin = nullptr; // Declarar lista vacía
 
     int opcion;
-    string tituloCharla;
-    
+    string tituloCharla;    
 
     cout << "MENU" << endl;
     cout << "1. Agregar titulo de charla" << endl;
@@ -114,16 +123,14 @@ int main()
             cout << "Ingrese el titulo de una charla a buscar: ";
             cin.ignore();
             getline(cin, tituloCharla);
-            tituloCharla = modificarTitulo(tituloCharla);
 
-                if(buscarTitulo(fin, tituloCharla))
-                {
-                    cout << "El titulo " << tituloCharla << " Se encuentra en la lista";
-                }
-                else
-                {
-                    cout << "El titulo " << tituloCharla << " No se encuentra en la lista";
-                }
+            while(tituloCharla != "x" && tituloCharla != "X")
+            {
+                tituloCharla = modificarTitulo(tituloCharla);
+                buscarTitulo(fin, tituloCharla);
+                cout << "Ingrese el titulo de una charla a buscar (x para finalizar): ";
+                getline(cin, tituloCharla);
+            }
             break;
         }
 
