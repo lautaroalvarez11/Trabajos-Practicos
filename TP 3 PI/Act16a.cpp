@@ -24,8 +24,6 @@ Nodo* insertarAlPrincipio(Nodo* fin, int numero)
       fin -> siguiente = nuevoNodo; // Y el puntero fin va a apuntar al nuevo nodo porque es el primer elemento
     }
 
-    fin = nuevoNodo; // Actualizar el puntero fin para que apunte al nuevo nodo
-
     return fin; // Retorna el puntero fin porque apunta al primer elemento de la lista
 }
 

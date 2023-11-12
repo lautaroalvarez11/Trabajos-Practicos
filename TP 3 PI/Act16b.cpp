@@ -28,7 +28,7 @@ Nodo* insertarAlFinal(Nodo* fin, int numero)
 
 void mostrarLista(Nodo* fin)
 {
-    cout << "Lista: " << endl;
+    cout << "Lista:" << endl;
     if(fin != nullptr)
     {
         Nodo* auxiliar = fin -> siguiente;
