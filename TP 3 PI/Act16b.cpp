@@ -23,7 +23,6 @@ Nodo* insertarAlFinal(Nodo* fin, int numero)
         fin -> siguiente = nuevoNodo; // // El puntero fin va a apuntar al nuevo nodo porque es el primer elemento
     }
     return nuevoNodo; // Retorna el ultimo numero insertado en la lista
-
 }
 
 void mostrarLista(Nodo* fin)
