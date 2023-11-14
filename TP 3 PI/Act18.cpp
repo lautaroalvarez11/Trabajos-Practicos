@@ -87,65 +87,70 @@ int main()
     fin = nullptr; // Declarar lista vacía
 
     int opcion;
-    string tituloCharla;    
+    string tituloCharla;
 
-    cout << "MENU" << endl;
-    cout << "1. Agregar titulo de charla" << endl;
-    cout << "2. Buscar titulo de charla" << endl;
-    cout << "3. Salir" << endl;
-    cout << "Elija opcion: ";
-    cin >> opcion;
-
-    switch(opcion)
+    do
     {
-        case 1:
-        {
-            cout << "Ingrese el titulo de una charla: ";
-            cin.ignore();
-            getline(cin, tituloCharla);
+        cout << "MENU" << endl;
+        cout << "1. Agregar titulo de charla" << endl;
+        cout << "2. Buscar titulo de charla" << endl;
+        cout << "3. Salir" << endl;
+        cout << "Elija opcion: ";
+        cin >> opcion;
 
-            while(tituloCharla != "x" && tituloCharla != "X")
+        switch(opcion)
+        {
+            case 1:
             {
-                tituloCharla = modificarTitulo(tituloCharla);
-                fin = insertarAlFinal(fin, tituloCharla);
-                cout << "Ingrese otro titulo de charla (x para finalizar): ";
+                cout << "Ingrese el titulo de una charla: ";
+                cin.ignore();
                 getline(cin, tituloCharla);
+
+                while(tituloCharla != "x" && tituloCharla != "X")
+                {
+                    tituloCharla = modificarTitulo(tituloCharla);
+                    fin = insertarAlFinal(fin, tituloCharla);
+                    cout << "Ingrese otro titulo de charla (x para finalizar): ";
+                    getline(cin, tituloCharla);
+                }
+
+                mostrarLista(fin);
+                cout << endl;
+                main();
+                break;
             }
 
-            mostrarLista(fin);
-            cout << endl;
-            main();
-            break;
-        }
-
-        case 2:
-        {
-            cout << "Ingrese el titulo de una charla a buscar: ";
-            cin.ignore();
-            getline(cin, tituloCharla);
-
-            while(tituloCharla != "x" && tituloCharla != "X")
+            case 2:
             {
-                tituloCharla = modificarTitulo(tituloCharla);
-                buscarTitulo(fin, tituloCharla);
-                cout << "Ingrese el titulo de una charla a buscar (x para finalizar): ";
+                cout << "Ingrese el titulo de una charla a buscar: ";
+                cin.ignore();
                 getline(cin, tituloCharla);
+
+                while(tituloCharla != "x" && tituloCharla != "X")
+                {
+                    tituloCharla = modificarTitulo(tituloCharla);
+                    buscarTitulo(fin, tituloCharla);
+                    cout << "Ingrese el titulo de una charla a buscar (x para finalizar): ";
+                    getline(cin, tituloCharla);
+                }
+                break;
             }
-            break;
-        }
 
-        case 3:
-        {
-            break;
-        }
+            case 3:
+            {
+                break;
+            }
 
-        default:
-        {
-            cout << "Opcion no valida, ingrese nuevamente" << endl;
-            main();
-            break;
+            default:
+            {
+                cout << "Opcion no valida, ingrese nuevamente" << endl;
+                main();
+                break;
+            }
         }
-    }
+    } while (opcion != 3);
+
+    
 
     return 0;
 }
