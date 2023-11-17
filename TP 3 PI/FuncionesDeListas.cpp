@@ -61,13 +61,12 @@ Nodo* insertarAlFinal(Nodo* inicio, int numero)
     nuevoNodo -> dato = numero; // Agregar numero al nodo
     nuevoNodo -> siguiente = nullptr; // Que el nuevo nodo apunte al nullptr
 
-    if(inicio == nullptr) // Si la lista está vacía (inicio apunta a nullptr), el nuevo nodo se convierte en el primer y único nodo.
+    if(inicio == nullptr) // Si la lista está vacía (inicio apunta a nullptr)
     {
-        inicio = nuevoNodo;
+        inicio = nuevoNodo; // El nuevo nodo se convierte en el primer y único nodo.
     }
-    else
+    else // Si la lista no está vacía. Hay que encontrar el último nodo para enlazarlo al nuevo nodo.
     {
-        // Si la lista no está vacía. Hay que encontrar el último nodo para enlazarlo al nuevo nodo.
         Nodo* auxiliar = inicio; // Se crea un nodo auxiliar que comienza en el inicio de la lista.
         while(auxiliar -> siguiente != nullptr) // Se recorre la lista hasta encontrar el último nodo, que se caracteriza por apuntar a nullptr.
         {
@@ -259,7 +258,7 @@ struct Articulos
 
 struct Nodo
 {
-    Articulos articulosSuper;
+    Articulos dato;
     Nodo* siguiente;
 };
 
@@ -269,10 +268,10 @@ Nodo* insertarOrdenado(Nodo* inicio, Articulos productos)
     nuevoNodo -> siguiente = nullptr; // Se indica que la lista no contiene ningun elemento
 
     // Al campo articulosSuper del nuevo nodo se le asigna el parametro productos para que se guarden los productos pasados por este ultimo parametro y de ahi se almacenen en el struct Articulos 
-    nuevoNodo -> articulosSuper = productos;
+    nuevoNodo -> dato = productos;
 
     
-    if(inicio == nullptr || nuevoNodo -> articulosSuper.codigo < inicio -> articulosSuper.codigo) // Si la lista está vacía o el codigo del nuevo nodo debe ir al principio porque es menor que el primer codigo de la lista.
+    if(inicio == nullptr || nuevoNodo -> dato.codigo < inicio -> dato.codigo) // Si la lista está vacía o el codigo del nuevo nodo debe ir al principio porque es menor que el primer codigo de la lista.
     {
         nuevoNodo -> siguiente = inicio; // El nuevo nodo apunta al nodo actual en el inicio.
         inicio = nuevoNodo; // Se actualiza el inicio de la lista para que el nuevo nodo sea el nuevo inicio.
@@ -280,7 +279,7 @@ Nodo* insertarOrdenado(Nodo* inicio, Articulos productos)
     else
     {
         Nodo* auxiliar = inicio; // Se crea un nodo auxiliar que empieza en el inicio de la lista.
-        while(auxiliar -> siguiente != nullptr && auxiliar -> siguiente -> articulosSuper.codigo < nuevoNodo -> articulosSuper.codigo) // Mientras la lista no esté vacía y el codigo del siguiente nuevo nodo es menor que el codigo del nuevo nodo (Se busca la posición adecuada para insertar el nuevo codigo)
+        while(auxiliar -> siguiente != nullptr && auxiliar -> siguiente -> dato.codigo < nuevoNodo -> dato.codigo) // Mientras la lista no esté vacía y el codigo del siguiente nuevo nodo es menor que el codigo del nuevo nodo (Se busca la posición adecuada para insertar el nuevo codigo)
         {
             auxiliar = auxiliar -> siguiente; // Se avanza al siguiente nodo en la lista buscando el último nodo que contenga un valor menor al que se quiere insertar.
         }
