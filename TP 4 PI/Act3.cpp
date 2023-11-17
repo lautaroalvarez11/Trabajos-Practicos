@@ -1,3 +1,5 @@
+// Escribir una función recursiva que, dado un número entero, lo imprima en orden inverso.
+
 #include <iostream>
 #include <string>
 using namespace std;
