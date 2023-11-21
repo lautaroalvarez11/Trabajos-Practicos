@@ -14,13 +14,13 @@ int min(int a, int b) // Funcion que verifica si el primer numero es menor que e
     }
 }
 
-int f(int arreglo[], int dl) //
+int f(int arreglo[], int dl)
 {
-    if (dl == 1) // Si la dimension logica es 1
+    if (dl == 1)
     {
-        return arreglo[0]; // Retorna el primer elemento del arreglo
+        return arreglo[0];
     }
-    else // Si la dimension logica es mayor a 1
+    else
     {
         return min(arreglo[dl-1], f(arreglo, dl-1));
     }
