@@ -10,7 +10,7 @@ int main()
 
     do
     {
-        cout << "Ingresa un número (0 para terminar): ";
+        cout << "Ingresa un numero (0 para terminar): ";
         cin >> numero;
 
         if (numero < 0)
@@ -19,7 +19,7 @@ int main()
         }
     } while (numero != 0);
 
-    cout << "Cantidad de números negativos leídos: " << contadorNegativos << endl;
+    cout << "Cantidad de numeros negativos leidos: " << contadorNegativos << endl;
 
     return 0;
 }

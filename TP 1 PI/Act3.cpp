@@ -35,14 +35,14 @@ int main()
 
     if (letra1 <= letra2 && letra1 <= letra3)
     {
-        cout << "La primera letra en el alfabeto es: " << letra1 << endl;
+        cout << "La letra que esta primera en el alfabeto es: " << letra1 << endl;
 
     } else if (letra2 <= letra1 && letra2 <= letra3)
     {
-        cout << "La primera letra en el alfabeto es: " << letra2 << endl;
+        cout << "La letra que esta primera en el alfabeto es: " << letra2 << endl;
     } else
     {
-        cout << "La primera letra en el alfabeto es: " << letra3 << endl;
+        cout << "La letra que esta primera en el alfabeto es: " << letra3 << endl;
     }
 
     return 0;

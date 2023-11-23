@@ -28,7 +28,7 @@ int main()
     }   
 
     cout << "El numero mas grande es: " << maximo << endl;
-    cout << "El numero mas pequeño es: " << minimo << endl;
+    cout << "El numero mas pequenio es: " << minimo << endl;
 
     return 0;
 }
