@@ -6,13 +6,15 @@ int main()
 {
 
     int arreglo[20]; // arreglo de tamaño 20
-    int numero_ingresado, i, j;
-    // j es una variable que se utiliza para encontrar la posición correcta donde se debe insertar
-    // el número ingresado en el arreglo para mantenerlo ordenado en forma ascendente.
+    int numero_ingresado, j;
+    /*
+    j es una variable que se utiliza para encontrar la posición correcta donde se debe insertar
+    el número ingresado en el arreglo para mantenerlo ordenado en forma ascendente.
+    */
 
     cout << "Ingrese 20 numeros enteros:" << endl;
 
-    for (i = 0; i < 20; i++) 
+    for (int i = 0; i < 20; i++) 
     {
         cin >> numero_ingresado;
 
@@ -32,7 +34,7 @@ int main()
 
     cout << "El arreglo ordenado es:" << endl;
     
-    for (i = 0; i < 20; i++) 
+    for (int i = 0; i < 20; i++) 
     {
         cout << arreglo[i] << " "; // Mostrar el arreglo ordenado
     }
