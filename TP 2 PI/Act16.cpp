@@ -1,3 +1,12 @@
+/*
+Escribir un programa para ser utilizado en una ventanilla de venta de entradas de un pequeño teatro con
+capacidad para 50 personas. Las filas están identificadas de la 0 a la 4 y cada fila tiene asientos numerados de 1
+a 10. Se debe registrar, por cada asiento, si está libre o no. Al iniciar el programa, todos los asientos están libres.
+Cuando alguien desea comprar una entrada, se deben informar qué localidades están libres. Entonces el cliente
+deberá elegir su asiento (indicando fila y número de asiento) y éste se marcará como vendido. Si ya se
+vendieron todas las entradas, no se debe permitir elegir asiento.
+*/
+
 #include <iostream>
 #include <string>
 using namespace std;

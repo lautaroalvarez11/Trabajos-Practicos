@@ -1,3 +1,14 @@
+/*
+Dado un arreglo bidimensional de tipo float de 7 filas y 10 columnas, describir las sentencias para:
+a) Asignar el valor 105 a la posición que se encuentra en la segunda fila, quinta columna.
+b) Asignar en todas las posiciones de la cuarta fila el valor 1.5.
+c) Imprimir todos los valores de la matriz, colocando cada fila en una nueva línea.
+d) Permutar las columnas 3 y 5.
+e) Sumar todos los elementos de las filas 2 y 6.
+f) Imprimir todos los valores de la tercera columna.
+g) Hallar en qué fila y columna se encuentra almacenado el mayor elemento.
+*/
+
 #include <iostream>
 #include <string>
 using namespace std;
@@ -36,7 +47,6 @@ int main()
 // C
 
     // Previamente inicializar el arreglo con valores
-    // Ejemplo: float matriz[1][10] = { {1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 9.9, 10.0} };
     // Recorrer la matriz e imprimir los valores
     for (int fila = 0; fila < 7; fila++)
     {

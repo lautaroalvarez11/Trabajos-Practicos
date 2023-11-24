@@ -1,3 +1,8 @@
+/*
+A pesar de que el programa a continuación no tiene errores de sintaxis, sí tiene varios otros problemas.
+¿Cuáles son? ¿Cómo podrían corregirse?
+*/
+
 #include <iostream>
 #include <string>
 using namespace std;

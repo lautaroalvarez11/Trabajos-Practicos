@@ -1,18 +1,21 @@
+/*
+Escribir una función que, dado un arreglo de int y su dimensión lógica, invierta los elementos del arreglo.
+*/
+
 #include <iostream>
 #include <string>
 using namespace std;
 
-// Función
-void invertirDigitos(int arreglo_num[], int dim_log)
+void invertirDigitos(int arreglo[], int dl)
 {
     int inicio = 0;
-    int final = dim_log - 1;
+    int final = dl - 1;
 
     while(inicio < final)
     {
-        int temporal = arreglo_num[inicio];
-        arreglo_num[inicio] = arreglo_num[final];
-        arreglo_num[final] = temporal;
+        int temporal = arreglo[inicio];
+        arreglo[inicio] = arreglo[final];
+        arreglo[final] = temporal;
 
         inicio++;
         final--;
@@ -31,21 +34,15 @@ int main()
         main();
     }
 
-
-
     int arreglo[dim_log];
     cout << "Ingrese los elementos del arreglo: " << endl;
     for(int i = 0; i < dim_log; i++)
     {
-        cout << "Número " << i + 1 << ": ";
+        cout << "Numero " << i + 1 << ": ";
         cin >> arreglo[i];
     }
 
-
-
     invertirDigitos(arreglo, dim_log);
-
-
 
     cout << "Arreglo invertido: ";
     for(int i = 0; i < dim_log; i++)

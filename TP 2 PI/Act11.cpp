@@ -1,10 +1,17 @@
+/*
+Escribir un programa que permita al usuario ingresar números enteros positivos,
+los números ingresados no deben almacenarse.
+Al finalizar, informar la cantidad de veces que apareció cada dígito (del 0 al 9) en todos los números.
+*/
+
 #include <iostream>
 #include <string>
 using namespace std;
 
+const int NUM_DIGITOS = 10; // Número de dígitos (del 0 al 9)
+
 int main()
-{
-    const int NUM_DIGITOS = 10; // Número de dígitos (del 0 al 9)
+{ 
     int contadores[NUM_DIGITOS] = {0}; // Inicializamos todos los contadores a 0
 
     int numero;
@@ -32,7 +39,7 @@ int main()
     cout << "Cantidad de veces que apareció cada dígito:" << endl;
     for (int i = 0; i < NUM_DIGITOS; i++)
     {
-        cout << "Dígito " << i << ": " << contadores[i] << " veces" << endl;
+        cout << "Digito " << i << ": " << contadores[i] << " veces" << endl;
     }
 
     return 0;

@@ -1,3 +1,8 @@
+/*
+Una matriz cuadrada A se dice que es simétrica si A(i,j) = A(j,i) para todo i, j.
+Escribir un programa que decida si una matriz de 3 x 3 dada es o no simétrica.
+*/
+
 #include <iostream>
 #include <string>
 using namespace std;

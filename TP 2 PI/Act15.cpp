@@ -1,3 +1,7 @@
+/*
+Dadas dos matrices de 4 x 4 leídas por teclado, informar la matriz resultante de la operación A + B.
+*/
+
 #include <iostream>
 #include <string>
 using namespace std;

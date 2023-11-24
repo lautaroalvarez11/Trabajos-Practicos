@@ -1,3 +1,8 @@
+/*
+Implementar una función llamada mas_uno que tiene como parámetro un arreglo estático de enteros y que
+incrementa en uno el valor de cada elemento de dicho arreglo. Añadir otros parámetros que se necesiten.
+*/
+
 #include <iostream>
 #include <string>
 using namespace std;
