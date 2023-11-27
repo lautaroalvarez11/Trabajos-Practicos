@@ -1,0 +1,1 @@
+// Limpiar el buffer de nueva línea

@@ -15,7 +15,7 @@ using namespace std;
 
 struct Fiesta
 {
-    string NombreApelido;
+    string NombreApellido;
     char Sexo;
     int Edad;
 };
@@ -28,9 +28,9 @@ void CargarInvitados(Fiesta invitados[MAX_INVITADOS])
     while(cantidadInvitados < MAX_INVITADOS)
     {
         cout << "Ingrese nombre y apellido de invitado/a (Ingrese ZZZ para finalizar): ";
-        getline(cin, invitados[cantidadInvitados].NombreApelido);
+        getline(cin, invitados[cantidadInvitados].NombreApellido);
 
-        if(invitados[cantidadInvitados].NombreApelido == "ZZZ" || invitados[cantidadInvitados].NombreApelido == "zzz")
+        if(invitados[cantidadInvitados].NombreApellido == "ZZZ" || invitados[cantidadInvitados].NombreApellido == "zzz")
         {
             cout << "------------------------" << endl;
             break;
@@ -54,7 +54,7 @@ void NombreMujeresMenorIgualA20(Fiesta invitados[MAX_INVITADOS])
     {
         if (invitados[i].Sexo == 'F' || invitados[i].Sexo == 'f' && invitados[i].Edad <= 20)
         {
-            cout << "Nombre: " << invitados[i].NombreApelido << endl;
+            cout << "Nombre: " << invitados[i].NombreApellido << endl;
         }
     }
     cout << "------------------------" << endl;
@@ -69,7 +69,7 @@ void EliminarInvitado(Fiesta invitados[MAX_INVITADOS])
     bool invitadoEncontrado = false;
     for(int i = 0; i < MAX_INVITADOS; ++i)
     {
-        if(invitados[i].NombreApelido == nombreEliminar)
+        if(invitados[i].NombreApellido == nombreEliminar)
         {
             // Eliminar el invitado encontrando moviendo los elementos posteriores hacia atrás
             for (int j = i; j < MAX_INVITADOS - 1; ++j)
@@ -96,7 +96,7 @@ void MostrarListaInvitados(Fiesta invitados[MAX_INVITADOS], int cantidadInvitado
     for (int i = 0; i < cantidadInvitados; ++i)
     {
         cout << "Invitado/a " << i + 1 << ":" << endl;
-        cout << "Nombre: " << invitados[i].NombreApelido << endl;
+        cout << "Nombre: " << invitados[i].NombreApellido << endl;
         cout << "Sexo: " << invitados[i].Sexo << endl;
         cout << "Edad: " << invitados[i].Edad << endl;
         cout << "------------------------" << endl;
