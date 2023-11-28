@@ -2,224 +2,128 @@
 #include <string>
 using namespace std;
 
-// ACT 1 Identificar errores
-const int MAX = 20;
-int cargar(int &arreglo[], int dl)
-{
-    int codigo;
-    cout << "Ingresar codigo: (0 para finalizar)";
-    cin >> codigo;
-    for(codigo >= 1; codigo != 0; codigo++)
-    {
-        arreglo[dimensionLogica] = codigo;
-        dimensionLogica++;
-        cout << "Ingresar codigo: (0 para finalizar)";
-        cin >> codigo;
-    }
-    return dimensionLogica;
-}
-
-int main()
-{
-    int codigos[MAX];
-    const int dimensionLogica = 0;
-    cargar(codigos, dimensionLogica);
-    return 0;
-}
-
 /*
-PROBLEMAS:
-1. El parámetro arreglo[] en la función cargar está mal declarado.
-Debería ser int arreglo[] en lugar de int &arreglo[].
-En este caso no es necesario pasar el parámetro por referencia.
+1) Analizar que hace el código y ver que se imprime por pantalla:
 
-2. El parámetro dl en la función cargar está declarado pero no se utiliza en la función.
-Se puede cambiar por dimensionLogica.
-
-3. En el bucle for dentro de la función cargar, la condición codigo >= 1 debería ser codigo > 0.
-Además, en la expresión de incremento, se debería usar codigo-- en lugar de codigo++
-para disminuir el valor de codigo.
-
-4. La variable dimensionLogica se declara como const int dimensionLogica = 0; en la función main,
-lo que hace que no se pueda modificar. Se debe declarar como una variable normal
-y luego pasarla por referencia a la función cargar para que pueda actualizarse dentro de la función.
-
-SOLUCIÓN:
-const int MAX = 20;
-int cargar(int arreglo[], int &dimensionLogica)
+void funcion(int arreglo[], int &dl)
 {
-    int codigo;
-    cout << "Ingresar codigo: (0 para finalizar)";
-    cin >> codigo;
-    for(codigo > 0; codigo != 0; codigo--)
+    int i = 0;
+    while(i < dl)
     {
-        arreglo[dimensionLogica] = codigo;
-        dimensionLogica++;
-        cout << "Ingresar codigo: (0 para finalizar)";
-        cin >> codigo;
+        if(arreglo[i] % 2 != 0)
+        {
+            for(int j = i; j < dl; j++)
+            {
+                arreglo[j] = arreglo[j+1];
+            }
+            dl--;
+        }
+	else
+        {
+            i++;
+        }
     }
-    return dimensionLogica;
 }
 
 int main()
 {
-    int codigos[MAX];
-    int dimensionLogica;
-    cargar(codigos, dimensionLogica);
+    int num[] = {5,4,3,1,12,6,7,8,9,14};
+    int dl = 10;
+
+    funcion(num, dl);
+
+    for(int i = 0; i < dl; i++)
+    {
+        cout << num[i] << endl;
+    }
+
     return 0;
 }
-*/
 
-// -----------------------------------------------------------------------------------------------
+QUE HACE Y QUE IMPRIME:
+Lo que hace esta función es eliminar los números impares fijandose si el resto
+de dividir cada numero es igual a 0, si no lo es, lo elimina y en su lugar
+se lo reemplaza por el siguiente numero, a su vez que se decrementa la dimensión lógica
+Imprime 4,12,6,8,14
 
-// ACT 2 Indicar que valores se imprimen
-void funcionA(int x)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2) Analizar el código e indicar que se imprime por pantalla:
+
+void hacer_calculo(int &x, int y, int &z)
 {
-    x = x + 10;
-    cout << "FuncionA::ImprimirMensaje: Valor de X = " << x << endl;
-}
-
-void funcionB(int &x)
-{
-    x = x + 3;
-    funcionA(x);
-    cout << "FuncionB::ImprimirMensaje: Valor de X = " << x << endl;
+    cout << x << " " << y << " " << z << endl;
+    x = 1;
+    y = 2;
+    z = 3;
+    cout << x << " " << y << " " << z << endl;
 }
 
 int main()
 {
-    int x = 5;
-    funcionB(x);
+    int a, b, c;
+    a = 10;
+    b = 20;
+    c = 30;
+    hacer_calculo(a, b, c);
+    cout << a << " " << b << " " << c;
     return 0;
 }
 
-/*
-FuncionA::ImprimirMensaje: Valor de X = 18
+SE IMPRIME:
+10 20 30
+1 2 3
+1 20 3
 
-FuncionB::ImprimirMensaje: Valor de X = 8
-*/
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-// -----------------------------------------------------------------------------------------------
+3) Realizar código:
 
-// ACT 3 Escribir código
+const int MaximoProductos = 1000;
 
-struct Estudiantes
+struct Comercio
 {
-    int legajo;
-    string nombreApellido;
-    string curso;
-    float calificacion;
+	int ID;
+	string Rubro;
+	string Descripcion;
+	float Precio;
+	int stockActual;
+	int stockMinimo;
 };
 
-const int MaxEstudiantes = 1000; // DIMENSION FÍSICA
-double PromedioEstudiantes(Estudiantes estudiante[MaxEstudiantes], int numEstudiantes, string cursoBuscado)
+void Informe(Comercio arreglo[MaximoProductos], int dimensionLogica)
 {
-    double sumaCalificaciones = 0.0;
-    int cantidadEstudiantes = 0;
-
-    for (int i = 0; i < numEstudiantes; i++)
-    {
-        if (estudiante[i].curso == cursoBuscado)
-        {
-            sumaCalificaciones += estudiante[i].calificacion;
-            cantidadEstudiantes++;
-        }
-    }
-
-    if (cantidadEstudiantes == 0)
-    {
-        cout << "No se encontraron estudiantes en el curso " << cursoBuscado << endl;
-        return 0.0;
-    }
-
-        return sumaCalificaciones / cantidadEstudiantes;
+	for(int i = 0; i < dimensionLogica - 1; i++)
+	{
+		if(arreglo[i].stockActual < arreglo[i].stockMinimo)
+		{
+			cout << "ID: " << arreglo[i].ID << endl;
+			cout << "Descripcion: " << arreglo[i].Descripcion << endl;
+		}
+	}
 }
 
-int main()
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+4) Realizar código:
+
+int matriz[2][3];
+
+a-
+matriz[1][0] = 105;
+
+b-
+matriz[1][1] = 42;
+
+c-
+for(int i = 0; i < 3; i++)
 {
-    const int MAX_ESTUDIANTES = 100; // Máximo número de estudiantes que se pueden registrar
-    Estudiantes estudiante[MAX_ESTUDIANTES];
-    int numEstudiantes = 0;
-
-    string cursoBuscado;
-    cout << "Ingrese el nombre del curso para calcular el promedio de calificaciones: ";
-    cin >> cursoBuscado;
-
-    double promedioTotal = PromedioEstudiantes(estudiante, numEstudiantes, cursoBuscado);
-    if (promedioTotal > 0)
-    {
-        cout << "El promedio de calificaciones para el curso " << cursoBuscado << " es: " << promedioTotal << endl;
-    }
-    
-    return 0;
+	matriz[0][i] = 42;
 }
 
-// -----------------------------------------------------------------------------------------------
-
-// ACT 4  Identificar errores
-
-int main()
+d-
+for(int i = 0; i < 2; i++)
 {
-    int matriz[2][2];
-
-    matriz[0][0] = 1;
-    matriz[0][1] = 2.5;
-    matriz[0][2] = 3;
-
-    matriz[1][0] = 4;
-    matriz[1][1] = 5;
-    matriz[1][2] = 6;
-
-    matriz[2][0] = 7;
-    matriz[2][1] = 8;
-    matriz[2][2] = 9;
-
-    cout << "Matriz:" << endl;
-    for(int i = 0; i < 3; i++)
-    {
-        for(int j = 0; j < 3; j++)
-        {
-            cout << matriz[i][j] << "";
-        }
-        cout << endl;
-    }
-    return 0;
-}
-
-/*
-PROBLEMAS:
-1. Se define una matriz de 2x2 y luego se inicializan 9 valores, es decir,
-se quiere definir una matriz de 3x3
-
-2. Tiene un valor de tipo float en la posicion 0 - 1, cuando la matriz se definio
-de tipo int
-
-SOLUCIÓN:
-int main()
-{
-    int matriz[3][3];
-
-    matriz[0][0] = 1;
-    matriz[0][1] = 2;
-    matriz[0][2] = 3;
-
-    matriz[1][0] = 4;
-    matriz[1][1] = 5;
-    matriz[1][2] = 6;
-
-    matriz[2][0] = 7;
-    matriz[2][1] = 8;
-    matriz[2][2] = 9;
-
-    cout << "Matriz:" << endl;
-    for(int i = 0; i < 3; i++)
-    {
-        for(int j = 0; j < 3; j++)
-        {
-            cout << matriz[i][j] << "";
-        }
-        cout << endl;
-    }
-    return 0;
+	matriz[i][2] = 78;
 }
 */
